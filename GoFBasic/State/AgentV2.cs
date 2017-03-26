@@ -5,8 +5,10 @@ namespace GoFBasic.State
     public class AgentV2
     {
         private const int MAX_HP = 100;
-
-        private IAgentState _currentState = null;
+        internal const int HEALTH_LOW_LIMIT = 70;
+        internal const int INJURED_LOW_LIMIT = 1;
+        internal const int DEAD_LOW_LIMIT = 0;
+        internal IAgentState _currentState = null;
 
         private int _HP = 0;
 
@@ -37,6 +39,25 @@ namespace GoFBasic.State
             {
                 _HP = MAX_HP;
             }
+            _currentState.heal(this);
+        }
+
+        public void hitted(int aValue)
+        {
+            if (_HP - aValue >= DEAD_LOW_LIMIT)
+            {
+                _HP = _HP - aValue;
+            }
+            else
+            {
+                _HP = DEAD_LOW_LIMIT;
+            }
+            _currentState.hitted(this);
+        }
+
+        public void changeState(IAgentState aState)
+        {
+            _currentState = aState;
         }
     }
 }

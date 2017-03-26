@@ -10,6 +10,8 @@ namespace GoFBasic.State
 
         AgentV2 agent = new AgentV2();
         IAgentState health = new Health();
+        IAgentState injured = new Injured();
+
 
         [TestMethod]
         public void test_default_state_when_game_start()
@@ -28,6 +30,18 @@ namespace GoFBasic.State
             Assert.AreEqual(health.GetType(), agent.getState().GetType());
             Assert.AreEqual(MAX_HP, agent.getHP(), "Test heal(Health -> Health)");
 
+        }
+
+        [TestMethod]
+        public void test_Health_and_Injured_change_State()
+        {
+            agent.hitted(30);
+            Assert.AreEqual(health.GetType(), agent.getState().GetType());
+            agent.hitted(1);
+            Assert.AreEqual(injured.GetType(), agent.getState().GetType());
+            agent.heal(80);
+            Assert.AreEqual(health.GetType(), agent.getState().GetType());
+            Assert.AreEqual(MAX_HP, agent.getHP(), "Test heal(Injured -> Health)");
         }
     }
 }

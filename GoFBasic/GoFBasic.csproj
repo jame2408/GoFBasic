@@ -54,6 +54,7 @@
     <Compile Include="State\AgentV2.cs" />
     <Compile Include="State\Health.cs" />
     <Compile Include="State\IAgentState.cs" />
+    <Compile Include="State\Injured.cs" />
     <Compile Include="State\StateTest.cs" />
   </ItemGroup>
   <ItemGroup>
