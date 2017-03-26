@@ -26,5 +26,17 @@ namespace GoFBasic.State
         {
             return _HP;
         }
+
+        public void heal(int aValue)
+        {
+            if (_HP + aValue <= MAX_HP)
+            {
+                _HP = _HP + aValue;
+            }
+            else
+            {
+                _HP = MAX_HP;
+            }
+        }
     }
 }
