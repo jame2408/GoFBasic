@@ -10,6 +10,10 @@ namespace GoFBasic.State
             {
                 aAgent.changeState(new Injured());
             }
+            if (aAgent.getHP() < AgentV2.INJURED_LOW_LIMIT)
+            {
+                aAgent.changeState(new Dead());
+            }
         }
 
         public void heal(AgentV2 aAgent)

@@ -7,11 +7,13 @@ namespace GoFBasic.State
     public class StateTest
     {
         private const int MAX_HP = 100;
-
+        private const int MIN_HP = 0;
+        
         AgentV2 agent = new AgentV2();
         IAgentState health = new Health();
         IAgentState injured = new Injured();
-
+        IAgentState dead = new Dead();
+ 
 
         [TestMethod]
         public void test_default_state_when_game_start()
@@ -42,6 +44,14 @@ namespace GoFBasic.State
             agent.heal(80);
             Assert.AreEqual(health.GetType(), agent.getState().GetType());
             Assert.AreEqual(MAX_HP, agent.getHP(), "Test heal(Injured -> Health)");
+        }
+
+        [TestMethod]
+        public void test_Health_and_Dead_change_State()
+        {
+            agent.hitted(101);
+            Assert.AreEqual(dead.GetType(), agent.getState().GetType());
+            Assert.AreEqual(MIN_HP, agent.getHP(), "Test heal(Health -> Dead)");
         }
     }
 }
