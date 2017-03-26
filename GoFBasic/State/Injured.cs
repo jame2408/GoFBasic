@@ -6,7 +6,8 @@
         {
             if (aAgent.getHP() == AgentV2.DEAD_LOW_LIMIT)
             {
-                aAgent.changeState(new Dead());
+                //aAgent.changeState(new Dead());
+                aAgent.changeState(AgentV2.Dead_STATE);
             }
         }
 
@@ -14,7 +15,8 @@
         {
             if (aAgent.getHP() >= AgentV2.HEALTH_LOW_LIMIT)
             {
-                aAgent.changeState(new Health());
+                //aAgent.changeState(new Health());
+                aAgent.changeState(AgentV2.Health_STATE);
             }
 
             // Do something.

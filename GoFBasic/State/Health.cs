@@ -8,11 +8,13 @@ namespace GoFBasic.State
         {
             if (aAgent.getHP() < AgentV2.HEALTH_LOW_LIMIT)
             {
-                aAgent.changeState(new Injured());
+                //aAgent.changeState(new Injured());
+                aAgent.changeState(AgentV2.Injured_STATE);
             }
             if (aAgent.getHP() < AgentV2.INJURED_LOW_LIMIT)
             {
-                aAgent.changeState(new Dead());
+                //aAgent.changeState(new Dead());
+                aAgent.changeState(AgentV2.Dead_STATE);
             }
         }
 
