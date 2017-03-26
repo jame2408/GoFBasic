@@ -4,9 +4,13 @@ namespace GoFBasic.Singleton
 {
     public class FileSystem
     {
-        public static object getInstance()
+        private FileSystem() { }
+
+        private static readonly FileSystem mFileSystem = new FileSystem();
+
+        public static FileSystem getInstance()
         {
-            return new FileSystem();
+            return mFileSystem;
         }
     }
 }

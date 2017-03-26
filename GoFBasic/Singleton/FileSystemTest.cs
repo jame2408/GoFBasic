@@ -11,5 +11,11 @@ namespace GoFBasic.Singleton
             var fs1 = FileSystem.getInstance();
             Assert.IsNotNull(fs1);
         }
+
+        [TestMethod]
+        public void call_getInstance_twice_get_the_smae_instance()
+        {
+            Assert.AreSame(FileSystem.getInstance(), FileSystem.getInstance());
+        }
     }
 }
