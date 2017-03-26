@@ -4,7 +4,10 @@
     {
         public void hitted(AgentV2 aAgent)
         {
-            throw new System.NotImplementedException();
+            if (aAgent.getHP() == AgentV2.DEAD_LOW_LIMIT)
+            {
+                aAgent.changeState(new Dead());
+            }
         }
 
         public void heal(AgentV2 aAgent)

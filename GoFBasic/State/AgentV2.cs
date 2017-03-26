@@ -4,12 +4,12 @@ namespace GoFBasic.State
 {
     public class AgentV2
     {
-        private const int MAX_HP = 100;
         internal const int HEALTH_LOW_LIMIT = 70;
         internal const int INJURED_LOW_LIMIT = 1;
         internal const int DEAD_LOW_LIMIT = 0;
-        internal IAgentState _currentState = null;
 
+        private const int MAX_HP = 100;
+        private IAgentState _currentState = null;
         private int _HP = 0;
 
 

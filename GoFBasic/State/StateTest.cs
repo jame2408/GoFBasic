@@ -52,6 +52,21 @@ namespace GoFBasic.State
             agent.hitted(101);
             Assert.AreEqual(dead.GetType(), agent.getState().GetType());
             Assert.AreEqual(MIN_HP, agent.getHP(), "Test heal(Health -> Dead)");
+            agent.heal(80);
+            Assert.AreEqual(health.GetType(), agent.getState().GetType());
+
+        }
+
+        [TestMethod]
+        public void test_Injured_and_Dead_change_State()
+        {
+            agent.hitted(31);
+            Assert.AreEqual(injured.GetType(), agent.getState().GetType());
+            agent.hitted(70);
+            Assert.AreEqual(dead.GetType(), agent.getState().GetType());
+            Assert.AreEqual(MIN_HP, agent.getHP(), "Test heal(Injured -> Dead)");
+            agent.heal(1);
+            Assert.AreEqual(injured.GetType(), agent.getState().GetType());
         }
     }
 }
