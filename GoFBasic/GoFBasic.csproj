@@ -49,6 +49,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Singleton\FileSystem.cs" />
+    <Compile Include="Singleton\FileSystemTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
