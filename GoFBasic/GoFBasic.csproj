@@ -51,6 +51,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Singleton\FileSystem.cs" />
     <Compile Include="Singleton\FileSystemTest.cs" />
+    <Compile Include="State\AgentV2.cs" />
+    <Compile Include="State\Health.cs" />
+    <Compile Include="State\IAgentState.cs" />
+    <Compile Include="State\StateTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
