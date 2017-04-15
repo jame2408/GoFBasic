@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NSubstitute;
 
 namespace GoFBasic.State
 {
@@ -8,12 +9,11 @@ namespace GoFBasic.State
     {
         private const int MAX_HP = 100;
         private const int MIN_HP = 0;
-        
-        AgentV2 agent = new AgentV2();
+
+        AgentV2 agent = new AgentV2(new Health());
         IAgentState health = new Health();
         IAgentState injured = new Injured();
         IAgentState dead = new Dead();
- 
 
         [TestMethod]
         public void test_default_state_when_game_start()
@@ -67,6 +67,24 @@ namespace GoFBasic.State
             Assert.AreEqual(MIN_HP, agent.getHP(), "Test heal(Injured -> Dead)");
             agent.heal(1);
             Assert.AreEqual(injured.GetType(), agent.getState().GetType());
+        }
+
+        [TestMethod]
+        public void test_received_search_once()
+        {
+            var nsub = Substitute.For<IAgentState>();
+            var agentV2 = new AgentV2(nsub);
+            agentV2.search();
+            nsub.Received(1).search(agentV2);
+        }
+
+        [TestMethod]
+        public void test_received_fight_once()
+        {
+            var nsub = Substitute.For<IAgentState>();
+            var agentV2 = new AgentV2(nsub);
+            agentV2.fight();
+            nsub.Received(1).fight(agentV2);
         }
     }
 }

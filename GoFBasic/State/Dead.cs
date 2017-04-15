@@ -23,5 +23,15 @@ namespace GoFBasic.State
         {
             // Do something, I am already dead.
         }
+
+        public void search(AgentV2 aAgent)
+        {
+            // Do something, I am already dead.
+        }
+
+        public void fight(AgentV2 agentV2)
+        {
+            // Do something, I am already dead.
+        }
     }
 }

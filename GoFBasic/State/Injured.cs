@@ -21,5 +21,15 @@
 
             // Do something.
         }
+
+        public void search(AgentV2 aAgent)
+        {
+            // DO something
+        }
+
+        public void fight(AgentV2 agentV2)
+        {
+            // Do something
+        }
     }
 }

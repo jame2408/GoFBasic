@@ -17,9 +17,9 @@ namespace GoFBasic.State
         private int _HP = 0;
 
 
-        public AgentV2()
+        public AgentV2(IAgentState currentState)
         {
-            _currentState = new Health();
+            _currentState = currentState;
             _HP = MAX_HP;
         }
 
@@ -62,6 +62,16 @@ namespace GoFBasic.State
         public void changeState(IAgentState aState)
         {
             _currentState = aState;
+        }
+
+        public void search()
+        {
+            _currentState.search(this);
+        }
+
+        public void fight()
+        {
+            _currentState.fight(this);
         }
     }
 }
