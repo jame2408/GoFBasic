@@ -17,6 +17,10 @@ namespace GoFBasic.State
                 //aAgent.changeState(new Injured());
                 aAgent.changeState(AgentV2.Injured_STATE);
             }
+            else if (aAgent.getHP() >= AgentV2.DYING_LOW_LIMIT)
+            {
+                aAgent.changeState(AgentV2.Dying_STATE);
+            }
         }
 
         public void hitted(AgentV2 aAgent)

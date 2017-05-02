@@ -13,6 +13,7 @@ namespace GoFBasic.State
         AgentV2 agent = new AgentV2(new Health());
         IAgentState health = new Health();
         IAgentState injured = new Injured();
+        IAgentState dying = new Dying();
         IAgentState dead = new Dead();
 
         [TestMethod]
@@ -66,7 +67,7 @@ namespace GoFBasic.State
             Assert.AreEqual(dead.GetType(), agent.getState().GetType());
             Assert.AreEqual(MIN_HP, agent.getHP(), "Test heal(Injured -> Dead)");
             agent.heal(1);
-            Assert.AreEqual(injured.GetType(), agent.getState().GetType());
+            Assert.AreEqual(dying.GetType(), agent.getState().GetType());
         }
 
         [TestMethod]
@@ -85,6 +86,37 @@ namespace GoFBasic.State
             var agentV2 = new AgentV2(nsub);
             agentV2.fight();
             nsub.Received(1).fight(agentV2);
+        }
+
+        [TestMethod]
+        public void test_Health_and_Dying_change_State()
+        {
+            agent.hitted(71);
+            Assert.AreEqual(dying.GetType(), agent.getState().GetType());
+            agent.heal(70);
+            Assert.AreEqual(health.GetType(), agent.getState().GetType());
+        }
+
+        [TestMethod]
+        public void test_Injured_and_Dying_change_State()
+        {
+            agent.hitted(31);
+            Assert.AreEqual(injured.GetType(), agent.getState().GetType());
+            agent.hitted(40);
+            Assert.AreEqual(dying.GetType(), agent.getState().GetType());
+            agent.heal(1);
+            Assert.AreEqual(injured.GetType(), agent.getState().GetType());
+        }
+
+        [TestMethod]
+        public void test_Dying_and_Dead_change_State()
+        {
+            agent.hitted(71);
+            Assert.AreEqual(dying.GetType(), agent.getState().GetType());
+            agent.hitted(29);
+            Assert.AreEqual(dead.GetType(), agent.getState().GetType());
+            agent.heal(1);
+            Assert.AreEqual(dying.GetType(), agent.getState().GetType());
         }
     }
 }
