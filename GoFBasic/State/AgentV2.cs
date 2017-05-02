@@ -6,10 +6,12 @@ namespace GoFBasic.State
     {
         internal static IAgentState Health_STATE = new Health();
         internal static IAgentState Injured_STATE = new Injured();
+        internal static IAgentState Dying_STATE = new Dying();
         internal static IAgentState Dead_STATE = new Dead();
 
         internal const int HEALTH_LOW_LIMIT = 70;
-        internal const int INJURED_LOW_LIMIT = 1;
+        internal const int INJURED_LOW_LIMIT = 30;
+        internal const int DYING_LOW_LIMIT = 1;
         internal const int DEAD_LOW_LIMIT = 0;
 
         private const int MAX_HP = 100;

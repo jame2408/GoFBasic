@@ -9,6 +9,10 @@
                 //aAgent.changeState(new Dead());
                 aAgent.changeState(AgentV2.Dead_STATE);
             }
+            else if (aAgent.getHP() < AgentV2.INJURED_LOW_LIMIT)
+            {
+                aAgent.changeState(AgentV2.Dying_STATE);
+            }
         }
 
         public void heal(AgentV2 aAgent)
